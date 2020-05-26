@@ -1,8 +1,8 @@
 pipeline {
 	agent any
 	stages {
-		stage {
-			steps("Pull latest selenium-docker") {
+		stage("Pull latest selenium-docker") {
+			steps {
 				sh "docker pull skpardeshi/selenium-docker"
 			}
 		}
