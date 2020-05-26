@@ -1,13 +1,13 @@
-pipeline{
+pipeline {
 	agent any
-	stages{
-		stage("Run Test"){
-			step{
+	stages {
+		stage("Run Test") {
+			steps {
 				sh "docker-compose up"
 			}
 		}
-		stage("Bring Grid Down"){
-			step{
+		stage("Bring Grid Down") {
+			steps {
 				sh "docker-compose down"
 			}
 		}
