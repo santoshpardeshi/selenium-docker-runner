@@ -1,6 +1,11 @@
 pipeline {
 	agent any
 	stages {
+		stage {
+			steps("Pull latest selenium-docker") {
+				sh "docker pull skpardeshi/selenium-docker"
+			}
+		}
 		stage("Start hub") {
 			steps {
 				sh "docker-compose up --no-color -d hub chrome firefox"
