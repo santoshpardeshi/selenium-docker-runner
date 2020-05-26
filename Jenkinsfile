@@ -8,18 +8,14 @@ pipeline {
 		}
 		stage("Run Search Module Test") {
 			steps {
-				sh "docker-compose up search-module"
+				sh "docker-compose up search-module book-flight-module"
 			}
 		}
-		stage("Run Book-Fligh Test") {
-			steps {
-				sh "docker-compose up book-flight-module"
-			}
-		}
-		stage("Bring Grid Down") {
-			steps {
-				sh "docker-compose down"
-			}
+	}
+	post {
+		always {
+			archiveArtifacts artifacts: 'output/**'
+			sh "docker-compose down"
 		}
 	}
 }
